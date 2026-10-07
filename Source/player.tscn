@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://c0olur336boey"]
+
+[ext_resource type="Script" uid="uid://wpw3tnhqrqgq" path="res://Source/player.gd" id="1_uedky"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yo7go"]
+vertex_color_use_as_albedo = true
+grow = true
+grow_amount = -1.62
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uedky"]
+next_pass = SubResource("StandardMaterial3D_yo7go")
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.12069387, 0.0869505, 0.1572907, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_uedky"]
+radius = 0.75
+height = 1.5
+radial_segments = 8
+rings = 3
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_coxhp"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qu8ry"]
+radius = 1.0
+
+[node name="Player" type="CharacterBody3D" unique_id=512356735 node_paths=PackedStringArray("camera_marker", "center_marker", "mining_area", "camera")]
+collision_mask = 6
+script = ExtResource("1_uedky")
+camera_marker = NodePath("CameraMarker")
+center_marker = NodePath("CenterMarker")
+mining_area = NodePath("CenterMarker/MiningArea")
+camera = NodePath("CameraMarker/Camera3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=817873170]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+material_override = SubResource("StandardMaterial3D_uedky")
+mesh = SubResource("SphereMesh_uedky")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1256028944]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_coxhp")
+
+[node name="CameraMarker" type="Marker3D" parent="." unique_id=915625791]
+
+[node name="Camera3D" type="Camera3D" parent="CameraMarker" unique_id=944384505]
+transform = Transform3D(1, 0, 0, 0, 0.70156187, 0.7126086, 0, -0.7126086, 0.70156187, 0, 7.5678124, 7.2406845)
+fov = 50.0
+
+[node name="CenterMarker" type="Marker3D" parent="." unique_id=528743437]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="CenterMarker" unique_id=94167496]
+light_energy = 2.5
+spot_range = 12.0
+spot_attenuation = 0.0
+spot_angle = 180.0
+
+[node name="MiningArea" type="Area3D" parent="CenterMarker" unique_id=162557792]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.7085791)
+collision_mask = 6
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CenterMarker/MiningArea" unique_id=988561293]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+shape = SubResource("SphereShape3D_qu8ry")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=796890904]
+visible = false
+light_energy = 2.0
+omni_range = 10.0
+omni_attenuation = 0.2
+omni_shadow_mode = 0
