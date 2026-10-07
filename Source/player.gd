@@ -15,9 +15,6 @@ const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
 func _physics_process(delta: float) -> void:
-	
-	if Input.is_action_just_pressed("attack"):
-		pickaxe_swing()
 	var space_state = get_world_3d().direct_space_state
 	# Add the gravity.
 	if not is_on_floor():
@@ -48,6 +45,10 @@ func _physics_process(delta: float) -> void:
 		center_marker.look_at(result.get("position"))
 	move_and_slide()
 
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("use_item"):
+		pickaxe_swing()
+
 func check_mining_area() -> Array[Entity]:
 	var entity_array: Array[Entity]
 	for thing in mining_area.get_overlapping_bodies():
@@ -62,6 +63,7 @@ func pickaxe_swing():
 
 var camera_tween:Tween
 func _input(event: InputEvent) -> void:
+	#region Camera Control
 	if not camera_tween: camera_tween = create_tween()
 	if not camera_tween.is_valid():
 		if Input.is_action_pressed("cam_left"):
@@ -76,3 +78,11 @@ func _input(event: InputEvent) -> void:
 			camera_tween.tween_property(self,"rotation:y",rotation.y - deg_to_rad(45),0.2).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 			await camera_tween.finished
 			camera_tween.kill()
+	#endregion
+	#region Inventory Control
+	Global.current_item_index += roundi(Input.get_axis("inv_back","inv_forward"))
+	if Global.current_item_index < 0:
+		Global.current_item_index = 8
+	if Global.current_item_index > 8:
+		Global.current_item_index = 0
+	#endregion

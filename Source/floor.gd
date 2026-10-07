@@ -1,20 +1,30 @@
+class_name Floor
 extends Node3D
 
 @export var environment: Node3D
 @export var terrain: Terrain
 @export var player_scene:PackedScene
+@export var pickups: Node3D
+@export var rocks: Node3D
 
 var player:Player
 
 func _ready() -> void:
 	player = player_scene.instantiate()
-	player.position = Vector3(terrain.size/8,0,terrain.size/8)
-	player.position.y = terrain.get_height(player.position.x, player.position.z) + 3
+	player.position = terrain.get_spot_on_terrain(0,0)
 	add_child(player)
+	spawn_rocks()
 
 func spawn_rocks():
-	pass
+	for i in range(25):
+		var rock = load("res://Source/Entities/Rocks/basic_rock.tscn").instantiate()
+		rock.position = terrain.get_spot_on_terrain(
+			randi_range(-terrain.size/2,terrain.size/2),
+			randi_range(-terrain.size/2,terrain.size/2),
+			)
+		 
+		rocks.add_child(rock)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass

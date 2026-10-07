@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bbbeex4nskput"]
+
+[ext_resource type="Script" uid="uid://djbaf0y2bke6p" path="res://Source/pickup.gd" id="1_5x616"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_coxhp"]
+
+[node name="Pickup" type="RigidBody3D" unique_id=1579414563 node_paths=PackedStringArray("sprite")]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_5x616")
+sprite = NodePath("CollisionShape3D/Sprite")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2006115979]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("SphereShape3D_coxhp")
+
+[node name="Sprite" type="Sprite3D" parent="CollisionShape3D" unique_id=1483512236]
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1223739559]
+collision_layer = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1100619151]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("SphereShape3D_coxhp")
+
+[connection signal="body_entered" from="Area3D" to="." method="on_body_entered"]

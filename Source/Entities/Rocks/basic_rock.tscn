@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://b1r5x6mgfvy87"]
+
+[ext_resource type="PackedScene" uid="uid://d03anm1ad44kp" path="res://Source/entity.tscn" id="1_r37e7"]
+[ext_resource type="Script" uid="uid://4lr8octgeebs" path="res://Source/Entities/Rocks/basic_rock.gd" id="2_f42p7"]
+
+[node name="Rock" unique_id=993693116 instance=ExtResource("1_r37e7")]
+script = ExtResource("2_f42p7")
+max_health = 3
+
+[node name="CollisionShape" parent="." index="0" unique_id=922115523]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7754786, 0)
+
+[node name="Mesh" parent="." index="1" unique_id=368818002]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7754786, 0)

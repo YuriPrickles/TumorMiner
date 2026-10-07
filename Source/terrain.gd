@@ -28,6 +28,9 @@ extends MeshInstance3D
 func get_height(x:float,y:float) -> float:
 	return noise.get_noise_2d(x, y) * height
 	
+func get_spot_on_terrain(x:float,z:float) -> Vector3:
+	return Vector3(x, noise.get_noise_2d(x, z) * height,z)
+
 func get_normal(x:float,y:float) -> Vector3:
 	var epsilon:float = size / detailedness
 	var normal = Vector3(
