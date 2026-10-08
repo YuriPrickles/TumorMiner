@@ -16,7 +16,7 @@ func _ready() -> void:
 	spawn_rocks()
 
 func spawn_rocks():
-	for i in range(25):
+	for i in range(75):
 		var rock = load("res://Source/Entities/Rocks/basic_rock.tscn").instantiate()
 		rock.position = terrain.get_spot_on_terrain(
 			randi_range(-terrain.size/2,terrain.size/2),
@@ -28,3 +28,6 @@ func spawn_rocks():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
+
+func get_player() -> Player:
+	return player

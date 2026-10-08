@@ -7,3 +7,6 @@ var current_item_index:int
 
 func _ready() -> void:
 	inv_manager = InventoryManager.new()
+
+func get_current_item() -> Item:
+	return inv_manager.inventory[current_item_index]

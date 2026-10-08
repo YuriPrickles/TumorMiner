@@ -26,6 +26,7 @@ radius = 1.0
 
 [node name="Player" type="CharacterBody3D" unique_id=512356735 node_paths=PackedStringArray("camera_marker", "center_marker", "mining_area", "camera")]
 collision_mask = 6
+floor_max_angle = 3.1415927
 script = ExtResource("1_uedky")
 camera_marker = NodePath("CameraMarker")
 center_marker = NodePath("CenterMarker")

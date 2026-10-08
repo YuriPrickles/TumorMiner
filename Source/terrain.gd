@@ -70,7 +70,7 @@ func update_mesh() -> void:
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	noise.seed = randi()
+	noise.seed = int(pow(randi(),randi())) * randi() * randi() + randi() + randi() + randi() + randi() + randi() + randi() + randi() + randi() + randi()
 	update_mesh()
 
 

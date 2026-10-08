@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bkd2qlc0w3jyt"]
 
 [ext_resource type="Texture2D" uid="uid://bpardmxmg1fad" path="res://Assets/Graphics/Gameplay/Items/pickaxe.png" id="1_jxrwr"]
-[ext_resource type="Script" uid="uid://78s3uq4mueq6" path="res://Source/inventory_item_slot.gd" id="2_53bxo"]
+[ext_resource type="Script" uid="uid://78s3uq4mueq6" path="res://Source/UI/inventory_item_slot.gd" id="2_53bxo"]
 
 [node name="Slot1" type="TextureRect" unique_id=1581804889 node_paths=PackedStringArray("stack_number", "color_rect")]
 custom_minimum_size = Vector2(64, 64)

@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://b8xmok54oxfpy"]
+
+[ext_resource type="Script" uid="uid://bfpfwrnp6cvdg" path="res://Source/UI/status_ui.gd" id="1_nsea6"]
+
+[node name="StatusUI" type="Control" unique_id=2065216131 node_paths=PackedStringArray("health_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nsea6")
+health_label = NodePath("HealthLabel")
+
+[node name="HealthLabel" type="RichTextLabel" parent="." unique_id=63288773]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+bbcode_enabled = true
+text = "[right][font_size=48]100"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0

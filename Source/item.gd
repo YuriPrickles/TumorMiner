@@ -1,6 +1,12 @@
 class_name Item
 extends Resource
 
+enum Type {
+	ITEM,
+	PICKAXE,
+	PART
+}
+
 @export var name : String = "Item"
 @export var description : String = "Item"
 @export var max_stack : int = 1
@@ -14,8 +20,17 @@ var stack: int = 1:
 		stack = value
 
 func _init(stk:int = 1) -> void:
-	texture = load("%s/%s.png" % [Global.items_texture_path,get_item_class_name().to_snake_case()])
+	texture = load("%s/%s.png" % [
+		Global.items_texture_path,
+		get_item_class_name().to_snake_case()
+		])
 	stack = stk
+
+func on_switch_to(plr:Player):
+	pass
+
+func on_switch_away(plr:Player):
+	pass
 
 func use_item(plr:Player):
 	pass

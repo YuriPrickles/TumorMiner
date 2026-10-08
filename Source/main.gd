@@ -7,4 +7,3 @@ static var instance: Main
 
 func _ready() -> void:
 	instance = self
-	print(Utils.snakeificate("CopperPickaxe"))

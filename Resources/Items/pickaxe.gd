@@ -5,3 +5,6 @@ func _init(stk:int=1) -> void:
 	name = "Pickaxe"
 	description = "Mines things."
 	super(stk)
+
+func use_item(plr:Player):
+	plr.pickaxe_swing(1)
